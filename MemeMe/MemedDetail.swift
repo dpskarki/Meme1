@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemedDetail {
+struct MemedDetail {
     
     var topText : String
     var bottomText : String

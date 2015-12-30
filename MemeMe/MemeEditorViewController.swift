@@ -60,7 +60,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
         
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
@@ -69,7 +69,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
        
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
@@ -79,14 +79,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         shareButton.enabled = true
         dismissViewControllerAnimated(true, completion: nil)
         if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-        self.imagePickerView.image = originalImage
+        imagePickerView.image = originalImage
         }
     }
     
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.text = ""
-        registerAnObserver()
+        if(textField == bottomText){
+            registerAnObserver()
+        }
        
     }
     
@@ -110,12 +112,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 
     // moving the view up
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
     // moving the view down by adding the actual height we moved up
     func keyboardWillHide(notification: NSNotification){
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        view.frame.origin.y += getKeyboardHeight(notification)
     }
     
     
@@ -141,7 +143,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func cancelButton(sender: UIBarButtonItem) {
         topText.text = "TOP"
         bottomText.text = "BOTTOM"
-        self.imagePickerView.image = nil
+        imagePickerView.image = nil
         
     }
     
@@ -159,8 +161,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         navigationController!.navigationBar.hidden = true
         bottomToolbar.hidden = true
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame,
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame,
             afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
