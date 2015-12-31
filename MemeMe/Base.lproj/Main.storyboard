@@ -18,25 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8O0-Xf-6CZ">
-                                <rect key="frame" x="20" y="95" width="560" height="410"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ee1-gM-XGg">
-                                        <rect key="frame" x="247" y="0.0" width="67" height="48"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                    </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Q6-Ul-4i6">
-                                        <rect key="frame" x="53" y="58" width="455" height="294"/>
-                                    </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1nC-EA-Gyz">
-                                        <rect key="frame" x="211" y="362" width="139" height="48"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                    </textField>
-                                </subviews>
-                                <variation key="heightClass=compact-widthClass=regular" spacing="0.0"/>
-                            </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nb-Ba-85O">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -55,18 +36,36 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4HL-bC-a9f"/>
                                 </items>
                             </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-JS-yNx">
+                                <rect key="frame" x="61" y="85" width="479" height="430"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fju-4E-7Q3">
+                                        <rect key="frame" x="0.0" y="0.0" width="479" height="48"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dd7-Cw-WMa">
+                                        <rect key="frame" x="0.0" y="53" width="479" height="324"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kau-oJ-2tC">
+                                        <rect key="frame" x="0.0" y="382" width="479" height="48"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.5947907062903941" green="0.72581703654665553" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0Nb-Ba-85O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="D8w-Rn-LjA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0Nb-Ba-85O" secondAttribute="bottom" id="F9x-iF-lVq"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8O0-Xf-6CZ" secondAttribute="bottom" constant="95" id="O5I-1T-b9z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bcm-JS-yNx" secondAttribute="trailing" constant="40" id="O1j-qb-yqv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Nb-Ba-85O" secondAttribute="trailing" constant="-20" id="Oh0-Ym-tgx"/>
                             <constraint firstItem="0Nb-Ba-85O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QRV-fe-rJp"/>
-                            <constraint firstItem="8O0-Xf-6CZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="Ua5-85-lhE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8O0-Xf-6CZ" secondAttribute="trailing" id="bDU-Ag-4fa"/>
+                            <constraint firstItem="Bcm-JS-yNx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="41" id="XVT-Sl-tQK"/>
+                            <constraint firstItem="0Nb-Ba-85O" firstAttribute="top" secondItem="Bcm-JS-yNx" secondAttribute="bottom" constant="41" id="hZV-RN-Cqm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0Nb-Ba-85O" secondAttribute="bottom" id="oYg-6S-Ys3"/>
-                            <constraint firstItem="8O0-Xf-6CZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rd6-mt-RF0"/>
+                            <constraint firstItem="Bcm-JS-yNx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="vCr-m1-AoL"/>
                             <constraint firstAttribute="trailing" secondItem="0Nb-Ba-85O" secondAttribute="trailing" id="zXH-BC-USE"/>
                         </constraints>
                     </view>
@@ -84,13 +83,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="album" destination="ZHd-E6-iuW" id="OZz-uX-z6q"/>
-                        <outlet property="bottomText" destination="1nC-EA-Gyz" id="tLE-RW-ebR"/>
+                        <outlet property="bottomText" destination="kau-oJ-2tC" id="qsd-HX-ttZ"/>
                         <outlet property="bottomToolbar" destination="0Nb-Ba-85O" id="IE9-eZ-FYD"/>
                         <outlet property="cameraButton" destination="yyu-Cw-CIg" id="Eg7-5H-yfK"/>
-                        <outlet property="imagePickerView" destination="8Q6-Ul-4i6" id="DDO-XZ-fhs"/>
+                        <outlet property="imagePickerView" destination="Dd7-Cw-WMa" id="zHI-mZ-Kb4"/>
                         <outlet property="resetMeme" destination="Thx-CO-Ifi" id="Z7h-f6-5sq"/>
                         <outlet property="shareButton" destination="UNK-gR-AFi" id="YeH-gW-ldy"/>
-                        <outlet property="topText" destination="Ee1-gM-XGg" id="9aK-bM-piH"/>
+                        <outlet property="topText" destination="fju-4E-7Q3" id="lfh-3V-3Fb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
