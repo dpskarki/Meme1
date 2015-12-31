@@ -53,7 +53,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName : 4.5 ]
+            NSStrokeWidthAttributeName : -5.5 ]
         textField.defaultTextAttributes = memeTextAttributes
         textField.autocapitalizationType = .AllCharacters
         textField.textAlignment = .Center
@@ -112,6 +112,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
+    //view shift up only when the bottom text field is begin editing
     func keyboardWillShow(notification: NSNotification) {
         if bottomText.isFirstResponder() {
             view.frame.origin.y = -getKeyboardHeight(notification)
