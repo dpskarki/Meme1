@@ -20,6 +20,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var imagePickerView: UIImageView!
     let imagePicker = UIImagePickerController()
     
+    //variable to be used for meme detail view controller
+    var originalImage : UIImage?
+    var textTop: String?
+    var textBottom: String?
     
     override func viewDidLoad() {
         
@@ -74,9 +78,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        if  resetMeme.enabled == false {
-            resetMeme.enabled = true
-        }
         return true
         
     }
@@ -104,7 +105,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         shareButton.enabled = true
         dismissViewControllerAnimated(true, completion: nil)
         if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-        imagePickerView.image = originalImage
+            imagePickerView.image = originalImage
         }
         
     }

@@ -50,8 +50,16 @@ class MemeTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 90
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle==UITableViewCellEditingStyle.Delete{
+            let object = UIApplication.sharedApplication().delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.memes.removeAtIndex(indexPath.row)
+            memes.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+        
     }
     
     
