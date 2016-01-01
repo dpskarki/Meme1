@@ -22,6 +22,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         imagePicker.delegate = self
         customTextField(topText)
@@ -31,6 +32,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         album.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)
@@ -40,6 +42,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillDisappear(animated: Bool) {
+        
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
       
@@ -48,12 +51,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
   
     // setting custom attributes to textfield
     func customTextField(textField: UITextField) {
+        
         textField.delegate = self
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName : -5.5 ]
+            NSStrokeWidthAttributeName : -5.5
+        ]
         textField.defaultTextAttributes = memeTextAttributes
         textField.autocapitalizationType = .AllCharacters
         textField.textAlignment = .Center
@@ -61,11 +66,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
+        
         textField.text = ""
         
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         if  resetMeme.enabled == false {
             resetMeme.enabled = true
@@ -75,6 +82,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
+        
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
         
@@ -83,6 +91,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
    
     
     @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
+        
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         presentViewController(imagePicker, animated: true, completion: nil)
         
@@ -90,6 +99,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
         resetMeme.enabled = true
         shareButton.enabled = true
         dismissViewControllerAnimated(true, completion: nil)
@@ -101,12 +111,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     func subscribeToKeyboardNotifications() {
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillDisappear:", name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
     func unsubscribeFromKeyboardNotifications() {
+        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
         
@@ -114,6 +126,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //view shift up only when the bottom text field is begin editing
     func keyboardWillShow(notification: NSNotification) {
+        
         if bottomText.isFirstResponder() {
             view.frame.origin.y = -getKeyboardHeight(notification)
         }
@@ -121,6 +134,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func keyboardWillDisappear(notification: NSNotification) {
+        
         if !(self.view.frame.origin.y == 0) {
             view.frame.origin.y = 0
         }
@@ -128,6 +142,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.CGRectValue().height
@@ -135,13 +150,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func cancelButton(sender: UIBarButtonItem) {
-        topText.text = "TOP"
-        bottomText.text = "BOTTOM"
-        imagePickerView.image = nil
+        
+        dismissViewControllerAnimated(true, completion: nil)
         
     }
     
     func save() {
+        
         let meme = MemedDetail(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
@@ -150,6 +165,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     func generateMemedImage() -> UIImage{
+        
         navigationController!.navigationBar.hidden = true
         bottomToolbar.hidden = true
         UIGraphicsBeginImageContext(view.frame.size)
@@ -164,9 +180,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
 
     @IBAction func shareMeme(sender: UIBarButtonItem) {
+        
         let sharedMeme = generateMemedImage()
         let activity = UIActivityViewController(activityItems: [sharedMeme], applicationActivities: nil)
-        self.presentViewController(activity, animated: true, completion: nil)
+        presentViewController(activity, animated: true, completion: nil)
         activity.completionWithItemsHandler = {
             (activity: String?, completed: Bool, items: [AnyObject]?, error: NSError?) -> Void in
             if completed {
