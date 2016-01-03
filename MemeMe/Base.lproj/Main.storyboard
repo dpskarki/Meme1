@@ -157,7 +157,7 @@
         <!--Sent Memes-->
         <scene sceneID="yUC-2D-D7c">
             <objects>
-                <collectionViewController id="BID-4M-xW7" sceneMemberID="viewController">
+                <collectionViewController id="BID-4M-xW7" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4tn-KI-ke8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -176,7 +176,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="126" height="97"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWu-fg-aFM">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWu-fg-aFM">
                                             <rect key="frame" x="8" y="8" width="104" height="81"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="104" id="JK8-j4-2OO"/>
@@ -186,7 +186,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41863390253188537" green="0.47854630235602091" blue="0.44486815762455645" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="imageView" destination="PWu-fg-aFM" id="b0n-aw-899"/>
                                 </connections>
