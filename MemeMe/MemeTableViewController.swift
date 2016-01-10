@@ -11,7 +11,7 @@ import UIKit
 class MemeTableViewController: UITableViewController {
  
     var memes = [MemedDetail]()
-    
+   
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -62,6 +62,6 @@ class MemeTableViewController: UITableViewController {
         
     }
     
-    
 
 }
+

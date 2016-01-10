@@ -20,23 +20,5 @@ class MemeDetailViewController: UIViewController {
 
     }
     
-    @IBAction func cancelDetailView(sender: UIBarButtonItem) {
-        
-        dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
-    
-    @IBAction func editMeme(sender: UIBarButtonItem) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let editMeme = storyboard.instantiateViewControllerWithIdentifier("memeEditor") as! MemeEditorViewController
-        editMeme.originalImage = savedMeme.originalImage
-        editMeme.textTop = savedMeme.topText
-        editMeme.textBottom = savedMeme.bottomText
-        
-        presentViewController(editMeme, animated: true, completion: nil)
-    }
-   
 
 }
